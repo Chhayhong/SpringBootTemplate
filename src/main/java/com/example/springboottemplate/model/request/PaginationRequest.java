@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaginationRequest {
-
     @Builder.Default
     private Integer page = 1;
 

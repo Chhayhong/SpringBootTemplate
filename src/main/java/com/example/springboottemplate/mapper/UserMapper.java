@@ -15,7 +15,6 @@ public class UserMapper implements BaseMapper<User, UserDto> {
                 .name(entity.getName())
                 .surname(entity.getSurname())
                 .email(entity.getEmail())
-                .password(entity.getPassword())
                 .createdBy(entity.getCreatedBy())
                 .createdOn(entity.getCreatedDate())
                 .lastModifiedBy(entity.getLastModifiedBy())

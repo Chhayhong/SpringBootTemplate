@@ -10,7 +10,7 @@ public enum MessageResponse {
     USER_UPDATED(HttpStatus.OK, "User is updated"),
     USER_DELETED(HttpStatus.OK, "User is deleted"),
     ACCESS_DENIED_ERROR(HttpStatus.FORBIDDEN, "Forbidden"),
-    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "An internal server error occured"),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "An internal server error occurred"),
     NOT_FOUND_ERROR(HttpStatus.NOT_FOUND, "Not found"),
     BAD_REQUEST_ERROR(HttpStatus.BAD_REQUEST, "Bad Request");
 

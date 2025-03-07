@@ -13,9 +13,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class UserDto extends BaseDto {
-
     private String name;
     private String surname;
     private String email;
-    private String password;
 }

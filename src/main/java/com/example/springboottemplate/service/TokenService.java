@@ -41,11 +41,6 @@ public class TokenService {
         return jwtParser.getClaims(token);
     }
 
-    private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(jwtTokenSecret);
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
-
     @SneakyThrows
     private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {
         return Jwts
@@ -54,7 +49,7 @@ public class TokenService {
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 3600000))
-                .signWith(SignatureAlgorithm.HS512, jwtSecurityTokenConfiguration.getSecretKeySpec())
+                .signWith(jwtSecurityTokenConfiguration.getSecretKey())
                 .compact();
 
     }

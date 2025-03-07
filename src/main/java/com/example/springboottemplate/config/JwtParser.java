@@ -2,11 +2,13 @@ package com.example.springboottemplate.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
+
 
 @Component
 @RequiredArgsConstructor
@@ -17,9 +19,10 @@ public class JwtParser {
 
     public Claims getClaims(String jwtToken) {
         return Jwts.parser()
-                .setSigningKey(jwtTokenSecret.getBytes(StandardCharsets.UTF_8))
+                .verifyWith(Keys.hmacShaKeyFor(jwtTokenSecret.getBytes(StandardCharsets.UTF_8)))
                 .build()
-                .parseClaimsJws(jwtToken)
+                .parseSignedClaims(jwtToken)
                 .getPayload();
+
     }
 }

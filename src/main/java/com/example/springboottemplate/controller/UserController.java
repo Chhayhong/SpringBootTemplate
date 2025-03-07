@@ -21,11 +21,10 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<GenericResponse<PagingResult<UserDto>>> findAllUsers(
-            @RequestParam(required = false) Integer page,
-            @RequestParam(required = false) Integer size,
-            @RequestParam(required = false) String sortField,
-            @RequestParam(required = false) Sort.Direction direction
-    ) {
+            @RequestParam(defaultValue = "0",required = false) Integer page,
+            @RequestParam(defaultValue = "10",required = false) Integer size,
+            @RequestParam(defaultValue = "id",required = false) String sortField,
+            @RequestParam(defaultValue = "DESC",required = false) Sort.Direction direction) {
         final PaginationRequest request = new PaginationRequest(page, size, sortField, direction);
         final PagingResult<UserDto> users = userService.findAll(request);
         return GenericResponse.success(MessageResponse.USER_FOUND, users);
